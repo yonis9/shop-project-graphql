@@ -43,16 +43,11 @@ export const resolvers = {
         },
 
         addItemToCart: (_root, { item }, { cache }) => {
-            console.log('add item to cart resolvers')
-            console.log(item)
-            const cartItems = cache.readQuery({
+            const { cartItems } = cache.readQuery({
                 query: GET_CART_ITEMS
             });
-            
-            console.log(cartItems)
+        
             const newCartItems = addItemToCart(cartItems, item);
-            
-            console.log(newCartItems)
 
             cache.writeQuery({
                 query: GET_CART_ITEMS,

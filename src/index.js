@@ -13,7 +13,8 @@ import { typeDefs, resolvers} from './graphql/resolvers'
 import { store, persistor } from './redux/store';
 
 import './index.css';
-import App from './App';
+import { default as App } from './App/App.container';
+import INITIAL_DATA from './graphql/initial-data';
 
 const httpLink = createHttpLink({
   uri: 'https://crwn-clothing.com'
@@ -29,10 +30,7 @@ const client = new ApolloClient({
 });
 
 client.writeData({
-  data: {
-    cartHidden: true,
-    cartItems: []
-  }
+  data: INITIAL_DATA
 })
 
 
